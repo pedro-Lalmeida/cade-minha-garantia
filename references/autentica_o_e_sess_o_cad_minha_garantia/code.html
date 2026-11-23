@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#f3fcf2","surface-bright":"#f3fcf2","surface-container-high":"#e2eae1","error":"#ba1a1a","on-background":"#161d18","on-tertiary":"#ffffff","secondary":"#1f6a52","inverse-on-surface":"#ebf3ea","on-error":"#ffffff","secondary-fixed":"#a8f2d3","on-surface":"#161d18","on-error-container":"#93000a","surface-variant":"#dce5dc","surface-container":"#e8f0e7","primary-container":"#174c3c","tertiary":"#26302b","on-secondary-fixed":"#002116","on-surface-variant":"#404945","surface-dim":"#d4dcd3","secondary-container":"#a8f2d3","outline":"#707974","error-container":"#ffdad6","tertiary-fixed":"#dbe5de","primary-fixed":"#b8eed8","on-secondary-fixed-variant":"#00513c","primary-fixed-dim":"#9dd2bc","outline-variant":"#c0c9c3","primary":"#003527","tertiary-container":"#3c4641","surface-tint":"#356856","on-primary":"#ffffff","on-secondary-container":"#277058","on-primary-fixed-variant":"#1b4f3f","inverse-primary":"#9dd2bc","tertiary-fixed-dim":"#bfc9c2","surface-container-low":"#edf6ed","on-tertiary-container":"#a9b3ad","inverse-surface":"#2a322c","on-secondary":"#ffffff","secondary-fixed-dim":"#8dd5b8","on-tertiary-fixed-variant":"#3f4944","surface-container-highest":"#dce5dc","on-primary-container":"#87bba7","surface-container-lowest":"#ffffff","on-primary-fixed":"#002117","on-tertiary-fixed":"#151d19","background":"#f3fcf2"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-md":"1rem","space-sm":"0.5rem","margin-mobile":"1rem","space-lg":"1.5rem","gutter":"1.5rem","space-xs":"0.25rem","margin":"2rem","space-xl":"2rem","gutter-mobile":"1rem"},fontFamily:{"headline-md":["Manrope"],"label-md":["Manrope"],"headline-lg":["Manrope"],"headline-sm":["Manrope"],"body-md":["Manrope"],"body-sm":["Manrope"],"headline-lg-mobile":["Manrope"],"label-sm":["Manrope"],"headline-xl-mobile":["Manrope"],"headline-xl":["Manrope"],"body-lg":["Manrope"],"title-md":["Manrope"]},fontSize:{"headline-md":["1.5rem",{"lineHeight":"2rem","letterSpacing":"-0.01em","fontWeight":"600"}],"label-md":["0.875rem",{"lineHeight":"1.25rem","letterSpacing":"0.01em","fontWeight":"600"}],"headline-lg":["2.25rem",{"lineHeight":"2.75rem","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["1.25rem",{"lineHeight":"1.75rem","fontWeight":"600"}],"body-md":["1rem",{"lineHeight":"1.5rem","fontWeight":"400"}],"body-sm":["0.875rem",{"lineHeight":"1.25rem","fontWeight":"400"}],"headline-lg-mobile":["1.625rem",{"lineHeight":"2.125rem","letterSpacing":"-0.015em","fontWeight":"600"}],"label-sm":["0.75rem",{"lineHeight":"1rem","letterSpacing":"0.025em","fontWeight":"700"}],"headline-xl-mobile":["2rem",{"lineHeight":"2.5rem","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-xl":["3rem",{"lineHeight":"3.5rem","letterSpacing":"-0.03em","fontWeight":"700"}],"body-lg":["1.125rem",{"lineHeight":"1.75rem","fontWeight":"400"}],"title-md":["1.125rem",{"lineHeight":"1.5rem","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-space-lg"><div class="flex flex-col"><div class="px-space-lg pb-space-lg flex items-center gap-space-sm"><img alt="Logo Cadê Minha Garantia" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrCJRe-h3uqEHpasHeuTHp5Gay3zm-U3VbAZgX6khgI5iUUJszMk1O28fFfd7Fr31KqxHCoEfHId27No1vjoAL37-GFuY5XQEkK8M00uozB0QWe0OI22R3PkWAdNCmONsZpg8InwjtbeJEBDDRt-Sw1U-0ZX6OBav8c_rqBFnTlLXebNAczwt1VOyWHntK4TSaPTyb4TtMoqzCGkZRdtQXmgragxzPzNcCvp7q4mywLidQ"/><span class="font-headline-sm text-headline-sm text-primary">Cadê Minha Garantia</span></div><div class="px-space-md mb-space-md"><a class="w-full flex items-center justify-center gap-space-sm py-space-sm px-space-md rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-secondary transition-all shadow-[0_2px_8px_-2px_rgba(23,76,60,0.12)]" data-path="cadastrar-produto" href="#"><span class="material-symbols-outlined">add_circle</span><span>Cadastrar Produto</span></a></div><nav class="px-space-md flex flex-col gap-space-xs" data-active-classes="bg-secondary-container text-on-secondary-container font-label-md text-label-md rounded-xl"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-all" data-path="visao-geral" href="#"><span class="material-symbols-outlined">dashboard</span><span>Visão Geral</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-all" data-path="meus-produtos" href="#"><span class="material-symbols-outlined">inventory_2</span><span>Meus Produtos</span></a></nav></div><div class="px-space-md flex flex-col gap-space-md"><div class="p-space-md bg-surface-container-low rounded-xl flex flex-col gap-space-xs"><div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm"><span>Cofre de Documentos</span><span>68%</span></div><div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-secondary rounded-full w-[68%]"></div></div><span class="font-body-sm text-body-sm text-on-surface-variant">34 de 50 notas fiscais salvas</span></div><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant font-body-sm text-body-sm hover:bg-surface-container hover:text-on-surface transition-all" data-path="ajuda-e-suporte" href="#"><span class="material-symbols-outlined">help</span><span>Ajuda e Suporte</span></a></div></aside><div class="pl-72 flex flex-col min-h-screen"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="relative w-96"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span><input class="w-full h-10 pl-10 pr-12 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm placeholder:text-on-surface-variant shadow-[0_1px_4px_rgba(0,0,0,0.02)] focus:outline-none focus:ring-1 focus:ring-secondary transition-all" placeholder="Buscar produto, marca ou nota fiscal... (Ctrl+K)" type="text"/><kbd class="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">⌘K</kbd></div><div class="flex items-center gap-space-lg"><button aria-label="Notificações" class="relative p-2 rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-error rounded-full ring-2 ring-surface"></span></button><div class="relative flex items-center gap-space-sm pl-space-md border-l border-outline-variant"><div class="flex items-center gap-space-sm cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpe3WsQjFS-iIU2fT40B0nQbw4uUdst6L7SYQDLh4ZufdC0n9PX0okJpc0aOk07eZrlrQMn9ytfpOBDqpzthd9RvlLkvJthaRDsGcohPH0ZUdU-cK-mCIdQGi7ls_JyC-6KQXgx5J7sXQKlDOsJZF8kWm0QP8a8CXR2Hq2qtVE6GqZkrdhlm7-8wJVJftOnhdZrOscvpjV-mZPSmXX8GccIy0cpRbVEKhv2JM0wN0p"/><div class="flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface leading-tight">Mariana Souza</span><span class="font-body-sm text-body-sm text-on-surface-variant leading-tight">Plano Pessoal</span></div><span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span></div><div class="hidden absolute right-0 top-full mt-2 w-48 bg-surface-container-lowest rounded-xl shadow-[0_8px_24px_-4px_rgba(23,76,60,0.08)] py-space-xs"><a class="flex items-center gap-space-sm px-space-md py-space-sm text-error font-body-sm text-body-sm hover:bg-error-container hover:text-on-error-container transition-colors" data-path="login" href="#"><span class="material-symbols-outlined text-base">logout</span><span>Sair da conta</span></a></div></div></div></header><main class="w-full pt-16 flex-1 bg-surface px-space-xl py-space-lg"><div class="flex flex-col w-full">
+<div class="w-full max-w-6xl mx-auto my-auto min-h-[760px] flex rounded-2xl overflow-hidden shadow-[0_20px_50px_-12px_rgba(23,76,60,0.12)] bg-surface-container-lowest">
+<!-- Lado Esquerdo: Identidade Institucional & Cofre Visual -->
+<div class="hidden lg:flex lg:w-5/12 bg-primary-container text-on-primary flex-col justify-between p-space-xl relative overflow-hidden">
+<!-- Fundo texturizado e gradiente de proteção -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="shield-grid" patternunits="userSpaceOnUse" width="40">
+<path d="M20 5 L35 11 L35 22 C35 30 20 37 20 37 C20 37 5 30 5 22 L5 11 Z" fill="none" stroke="currentColor" stroke-width="1.2"></path>
+</pattern>
+</defs>
+<rect fill="url(#shield-grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-primary">Cadê Minha Garantia?</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-container/80">Cofre Inteligente de Direitos</span>
+</div>
+</div>
+<div class="mt-space-xl flex flex-col gap-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed bg-primary/40 px-3 py-1 rounded-full w-fit">Proteção Ativa 365 Dias</span>
+<h1 class="font-headline-lg text-headline-lg leading-tight text-on-primary">
+            Nunca mais perca um prazo de garantia nem seus comprovantes.
+          </h1>
+<p class="font-body-md text-body-md text-primary-fixed-dim leading-relaxed">
+            Centralize notas fiscais, receba alertas prévios de expiração e acione assistências com respaldo jurídico documentado em segundos.
+          </p>
+</div>
+</div>
+<div class="relative z-10 flex flex-col gap-space-lg mt-auto pt-space-xl">
+<!-- Social Proof / Testimonial -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest/10 backdrop-blur-md flex flex-col gap-space-xs">
+<div class="flex items-center gap-1 text-secondary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-surface-container-lowest italic leading-snug">
+            “Recuperei R$ 1.890 em reparos da minha TV graças ao alerta de 15 dias antes do fim da garantia de fábrica.”
+          </p>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-primary flex items-center justify-center font-label-sm text-label-sm">
+              RC
+            </div>
+<span class="font-label-sm text-label-sm text-primary-fixed">Rodrigo Castilho • São Paulo/SP</span>
+</div>
+</div>
+<!-- Badge de Criptografia -->
+<div class="flex items-center justify-between text-on-primary-container font-label-sm text-label-sm px-1">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-base text-secondary-container">lock</span>
+<span>Criptografia Bancária AES-256 bits</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+<span class="text-on-primary">Servidores LGPD</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Lado Direito: Formulário ShadCN/UI Tabs -->
+<div class="w-full lg:w-7/12 p-space-lg sm:p-space-xl flex flex-col justify-between relative bg-surface-container-lowest">
+<!-- Topo: Alerta de Sessão Expiração Contextual -->
+<div class="mb-space-md p-space-sm rounded-xl bg-error-container text-on-error-container flex items-start gap-space-sm transition-all duration-300" id="session-alert">
+<span class="material-symbols-outlined text-error shrink-0">history_toggle_off</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md">Sua sessão expirou por inatividade</p>
+<p class="font-body-sm text-body-sm opacity-90">Faça login novamente para retomar o acesso seguro às suas notas e prazos.</p>
+</div>
+<button aria-label="Fechar alerta" class="text-on-error-container hover:opacity-75 transition-opacity" onclick="document.getElementById('session-alert').classList.add('hidden')">
+<span class="material-symbols-outlined text-base">close</span>
+</button>
+</div>
+<div class="max-w-md w-full mx-auto flex flex-col gap-space-md">
+<!-- ShadCN Tabs Header -->
+<div class="flex items-center justify-center">
+<div class="w-full grid grid-cols-2 p-1 bg-surface-container rounded-xl">
+<button class="py-2 text-center rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm" id="tab-login" onclick="switchAuthTab('login')">
+              Entrar
+            </button>
+<button class="py-2 text-center rounded-lg font-label-md text-label-md text-on-surface-variant transition-all hover:text-on-surface" id="tab-signup" onclick="switchAuthTab('signup')">
+              Criar Conta
+            </button>
+</div>
+</div>
+<!-- ABA 1: ENTRAR -->
+<div class="flex flex-col gap-space-md transition-all" id="content-login">
+<div class="text-left">
+<h2 class="font-headline-sm text-headline-sm text-primary">Bem-vindo de volta</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Acesse seu cofre digital de garantias e notas fiscais.</p>
+</div>
+<!-- Social Login Rápido -->
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-sm transition-colors" type="button">
+<svg class="w-4 h-4 shrink-0" viewbox="0 0 24 24">
+<path d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.3 9 5 12 5z" fill="#EA4335"></path>
+<path d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z" fill="#4285F4"></path>
+<path d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 12.3 0 15.2s.7 5.5 1.9 7.9l3.7-2.9z" fill="#FBBC05"></path>
+<path d="M12 23.5c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.3-6.4-5.2L1.9 16.5C3.7 20.3 7.5 23.5 12 23.5z" fill="#34A853"></path>
+</svg>
+<span>Google</span>
+</button>
+<button class="h-11 px-4 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md flex items-center justify-center gap-space-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-base">domain</span>
+<span>Gov.br</span>
+</button>
+</div>
+<!-- Divisor -->
+<div class="relative my-1">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full bg-surface-container-high h-px"></div>
+</div>
+<div class="relative flex justify-center text-center">
+<span class="bg-surface-container-lowest px-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">ou continue com e-mail</span>
+</div>
+</div>
+<!-- Mensagem de Erro de Exemplo (Oculta por padrão ou ativável) -->
+<div class="hidden p-space-sm rounded-lg bg-error-container text-on-error-container font-body-sm text-body-sm flex items-center gap-space-xs" id="login-error-msg">
+<span class="material-symbols-outlined text-base text-error">error</span>
+<span>E-mail ou senha incorretos. Verifique e tente novamente.</span>
+</div>
+<form class="flex flex-col gap-space-md" id="form-login" onsubmit="handleLoginSubmit(event)">
+<!-- Email -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="login-email">E-mail corporativo ou pessoal</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">mail</span>
+<input class="w-full h-11 pl-10 pr-3 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm bg-surface-container-low/40" id="login-email" placeholder="seu.email@exemplo.com.br" required="" type="email" value="mariana.souza@gmail.com"/>
+</div>
+</div>
+<!-- Senha -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface" for="login-password">Senha de acesso</label>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Esqueci minha senha</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">key</span>
+<input class="w-full h-11 pl-10 pr-10 rounded-xl bg-surface-container-lowest text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm bg-surface-container-low/40" id="login-password" placeholder="••••••••••••" required="" type="password" value="Segredo123@"/>
+<button aria-label="Mostrar ou ocultar senha" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" onclick="togglePasswordVisibility('login-password', 'toggle-icon-login')" type="button">
+<span class="material-symbols-outlined text-xl" id="toggle-icon-login">visibility</span>
+</button>
+</div>
+</div>
+<!-- Lembrar Conexão -->
+<div class="flex items-center gap-space-sm">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary bg-surface-container-low" id="remember-me" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant select-none cursor-pointer" for="remember-me">Manter conectado neste dispositivo seguro</label>
+</div>
+<!-- Botão Entrar -->
+<button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-secondary transition-all shadow-md flex items-center justify-center gap-space-sm cursor-pointer mt-1" id="btn-login" type="submit">
+<span class="hidden animate-spin h-4 w-4 border-2 border-on-primary border-t-transparent rounded-full" id="btn-login-spinner"></span>
+<span id="btn-login-text">Entrar no Cofre</span>
+<span class="material-symbols-outlined text-base" id="btn-login-icon">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- ABA 2: CRIAR CONTA -->
+<div class="hidden flex flex-col gap-space-md transition-all" id="content-signup">
+<div class="text-left">
+<h2 class="font-headline-sm text-headline-sm text-primary">Crie seu cofre gratuito</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Até 50 notas fiscais e alertas automáticos para toda a sua família.</p>
+</div>
+<form class="flex flex-col gap-space-sm" id="form-signup" onsubmit="handleSignupSubmit(event)">
+<!-- Nome -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="signup-name">Nome completo</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">person</span>
+<input class="w-full h-10 pl-10 pr-3 rounded-xl bg-surface-container-low/40 text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="signup-name" placeholder="Mariana Souza" required="" type="text"/>
+</div>
+</div>
+<!-- E-mail -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="signup-email">E-mail</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">mail</span>
+<input class="w-full h-10 pl-10 pr-3 rounded-xl bg-surface-container-low/40 text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="signup-email" placeholder="mariana@exemplo.com.br" required="" type="email"/>
+</div>
+</div>
+<!-- Senha & Força -->
+<div class="flex flex-col gap-1">
+<label class="font-label-md text-label-md text-on-surface" for="signup-password">Defina sua senha mestra</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">lock</span>
+<input class="w-full h-10 pl-10 pr-10 rounded-xl bg-surface-container-low/40 text-on-surface font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-primary shadow-sm" id="signup-password" oninput="checkPasswordStrength(this.value)" placeholder="Mínimo 8 caracteres" required="" type="password"/>
+<button aria-label="Mostrar ou ocultar senha" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-on-surface" onclick="togglePasswordVisibility('signup-password', 'toggle-icon-signup')" type="button">
+<span class="material-symbols-outlined text-xl" id="toggle-icon-signup">visibility</span>
+</button>
+</div>
+<!-- Medidor de Força ShadCN -->
+<div class="flex flex-col gap-1 mt-1">
+<div class="grid grid-cols-4 gap-1 h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-surface-container-highest transition-all" id="bar-1"></div>
+<div class="h-full bg-surface-container-highest transition-all" id="bar-2"></div>
+<div class="h-full bg-surface-container-highest transition-all" id="bar-3"></div>
+<div class="h-full bg-surface-container-highest transition-all" id="bar-4"></div>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-label-sm text-label-sm">
+<span id="strength-label">Requisitos: letras, números e símbolos</span>
+<span class="font-bold text-secondary" id="strength-score">Razoável</span>
+</div>
+</div>
+</div>
+<!-- Termos e LGPD -->
+<div class="flex items-start gap-space-sm pt-1">
+<input class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary bg-surface-container-low" id="accept-terms" required="" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface-variant leading-tight cursor-pointer" for="accept-terms">
+                Concordo com os <a class="text-secondary underline" href="#">Termos de Uso</a> e autorizo o armazenamento seguro de notas conforme a <a class="text-secondary underline" href="#">Política de Privacidade (LGPD)</a>.
+              </label>
+</div>
+<!-- Botão Cadastrar -->
+<button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md hover:bg-secondary transition-all shadow-md flex items-center justify-center gap-space-sm cursor-pointer mt-2" id="btn-signup" type="submit">
+<span class="hidden animate-spin h-4 w-4 border-2 border-on-primary border-t-transparent rounded-full" id="btn-signup-spinner"></span>
+<span id="btn-signup-text">Criar Minha Conta Gratuita</span>
+<span class="material-symbols-outlined text-base" id="btn-signup-icon">check_circle</span>
+</button>
+</form>
+</div>
+</div>
+<!-- Rodapé do formulário: Segurança & Ajuda -->
+<div class="pt-space-md border-t-0 flex flex-col sm:flex-row items-center justify-between text-on-surface-variant font-body-sm text-body-sm gap-2">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-secondary">verified</span>
+<span>100% livre de anúncios e spam</span>
+</span>
+<a class="hover:text-primary transition-colors" href="#">Dúvidas com o acesso? Fale com suporte</a>
+</div>
+</div>
+</div>
+<!-- Sonner / ShadCN Toast Flutuante Notificador -->
+<div class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface p-space-md rounded-xl shadow-2xl flex items-center gap-space-md max-w-sm border-0 transform translate-y-2 opacity-0 pointer-events-none transition-all duration-300" id="sonner-toast">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-lg" id="toast-icon">check</span>
+</div>
+<div class="flex flex-col flex-1">
+<span class="font-label-md text-label-md text-inverse-on-surface" id="toast-title">Login efetuado com sucesso!</span>
+<span class="font-body-sm text-body-sm text-surface-variant" id="toast-desc">Redirecionando para o cofre de garantias...</span>
+</div>
+<button aria-label="Fechar notificação" class="text-inverse-on-surface/60 hover:text-inverse-on-surface" onclick="dismissToast()">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+<script>
+  function switchAuthTab(target) {
+    const tabLogin = document.getElementById('tab-login');
+    const tabSignup = document.getElementById('tab-signup');
+    const contentLogin = document.getElementById('content-login');
+    const contentSignup = document.getElementById('content-signup');
+
+    if (target === 'login') {
+      tabLogin.className = 'py-2 text-center rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm';
+      tabSignup.className = 'py-2 text-center rounded-lg font-label-md text-label-md text-on-surface-variant transition-all hover:text-on-surface';
+      contentLogin.classList.remove('hidden');
+      contentSignup.classList.add('hidden');
+    } else {
+      tabSignup.className = 'py-2 text-center rounded-lg font-label-md text-label-md transition-all bg-surface-container-lowest text-primary shadow-sm';
+      tabLogin.className = 'py-2 text-center rounded-lg font-label-md text-label-md text-on-surface-variant transition-all hover:text-on-surface';
+      contentSignup.classList.remove('hidden');
+      contentLogin.classList.add('hidden');
+    }
+  }
+
+  function togglePasswordVisibility(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  function checkPasswordStrength(password) {
+    const b1 = document.getElementById('bar-1');
+    const b2 = document.getElementById('bar-2');
+    const b3 = document.getElementById('bar-3');
+    const b4 = document.getElementById('bar-4');
+    const scoreText = document.getElementById('strength-score');
+
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[A-Z]/.test(password)) strength++;
+    if (/[0-9]/.test(password)) strength++;
+    if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+    [b1, b2, b3, b4].forEach((b) => {
+      b.className = 'h-full bg-surface-container-highest transition-all';
+    });
+
+    if (strength === 0) {
+      scoreText.textContent = 'Muito fraca';
+      scoreText.className = 'font-bold text-error';
+    } else if (strength === 1) {
+      b1.className = 'h-full bg-error transition-all';
+      scoreText.textContent = 'Fraca';
+      scoreText.className = 'font-bold text-error';
+    } else if (strength === 2) {
+      b1.className = 'h-full bg-surface-tint transition-all';
+      b2.className = 'h-full bg-surface-tint transition-all';
+      scoreText.textContent = 'Média';
+      scoreText.className = 'font-bold text-surface-tint';
+    } else if (strength === 3) {
+      b1.className = 'h-full bg-secondary transition-all';
+      b2.className = 'h-full bg-secondary transition-all';
+      b3.className = 'h-full bg-secondary transition-all';
+      scoreText.textContent = 'Forte';
+      scoreText.className = 'font-bold text-secondary';
+    } else if (strength >= 4) {
+      b1.className = 'h-full bg-primary transition-all';
+      b2.className = 'h-full bg-primary transition-all';
+      b3.className = 'h-full bg-primary transition-all';
+      b4.className = 'h-full bg-primary transition-all';
+      scoreText.textContent = 'Excelente (Blindada)';
+      scoreText.className = 'font-bold text-primary';
+    }
+  }
+
+  function showToast(title, desc, iconName) {
+    const toast = document.getElementById('sonner-toast');
+    const toastTitle = document.getElementById('toast-title');
+    const toastDesc = document.getElementById('toast-desc');
+    const toastIcon = document.getElementById('toast-icon');
+
+    toastTitle.textContent = title;
+    toastDesc.textContent = desc;
+    toastIcon.textContent = iconName || 'check';
+
+    toast.classList.remove('opacity-0', 'translate-y-2', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    setTimeout(() => {
+      dismissToast();
+    }, 4500);
+  }
+
+  function dismissToast() {
+    const toast = document.getElementById('sonner-toast');
+    toast.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+    toast.classList.remove('opacity-100', 'translate-y-0');
+  }
+
+  function handleLoginSubmit(e) {
+    e.preventDefault();
+    const spinner = document.getElementById('btn-login-spinner');
+    const text = document.getElementById('btn-login-text');
+    const icon = document.getElementById('btn-login-icon');
+    const btn = document.getElementById('btn-login');
+
+    spinner.classList.remove('hidden');
+    icon.classList.add('hidden');
+    text.textContent = 'Entrando...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      spinner.classList.add('hidden');
+      icon.classList.remove('hidden');
+      text.textContent = 'Entrar no Cofre';
+      btn.disabled = false;
+      showToast('Autenticado com Sucesso!', 'Carregando suas 34 garantias ativas...', 'lock_open');
+    }, 1500);
+  }
+
+  function handleSignupSubmit(e) {
+    e.preventDefault();
+    const spinner = document.getElementById('btn-signup-spinner');
+    const text = document.getElementById('btn-signup-text');
+    const icon = document.getElementById('btn-signup-icon');
+    const btn = document.getElementById('btn-signup');
+
+    spinner.classList.remove('hidden');
+    icon.classList.add('hidden');
+    text.textContent = 'Criando seu cofre seguro...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      spinner.classList.add('hidden');
+      icon.classList.remove('hidden');
+      text.textContent = 'Criar Minha Conta Gratuita';
+      btn.disabled = false;
+      showToast('Conta criada com sucesso!', 'Enviamos uma chave de verificação para o seu e-mail.', 'mark_email_read');
+    }, 1700);
+  }
+</script></main></div></body></html>

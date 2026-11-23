@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Cadê Minha Garantia - Painel</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        overscroll-behavior: none;
+        font-family: 'Manrope', sans-serif;
+      }
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: "#174C3C",
+              light: "#E7F1EA",
+              bg: "#F7F5EF",
+              card: "#FFFFFF",
+              text: "#303832",
+              muted: "#788078",
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F7F5EF] text-[#303832] antialiased min-h-screen flex flex-col">
+<!-- Sidebar Lateral Simples -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-[#E7F1EA] z-30 flex flex-col justify-between py-6">
+<div class="flex flex-col">
+<!-- Logo -->
+<div class="px-6 pb-6 flex items-center gap-3 border-b border-[#E7F1EA]">
+<div class="w-8 h-8 rounded-lg bg-[#174C3C] flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+</div>
+<span class="font-bold text-base tracking-tight text-[#174C3C]">Cadê Minha Garantia</span>
+</div>
+<!-- Navegação Simples (3 itens) -->
+<nav class="p-4 flex flex-col gap-1.5">
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg bg-[#E7F1EA] text-[#174C3C] font-semibold text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Visão Geral</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-[#788078] hover:bg-[#F7F5EF] hover:text-[#303832] font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span>Meus Produtos</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-[#788078] hover:bg-[#F7F5EF] hover:text-[#303832] font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>Cadastrar Produto</span>
+</a>
+</nav>
+</div>
+<!-- Rodapé da barra lateral discreto -->
+<div class="px-6 text-xs text-[#788078]">
+<span>Cadê Minha Garantia © 2024</span>
+</div>
+</aside>
+<!-- Área Principal -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- Topbar Limpa -->
+<header class="h-16 bg-white border-b border-[#E7F1EA] sticky top-0 z-20 flex items-center justify-between px-8">
+<!-- Busca simples -->
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#788078] text-[20px]">search</span>
+<input class="w-full h-9 pl-9 pr-4 rounded-md bg-[#F7F5EF] border-0 text-sm text-[#303832] placeholder:text-[#788078] focus:ring-1 focus:ring-[#174C3C] focus:bg-white transition-all" placeholder="Buscar produto por nome ou categoria..." type="text"/>
+</div>
+<!-- Perfil Mariana Souza & Botão Sair -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3">
+<img alt="Mariana Souza" class="w-8 h-8 rounded-full object-cover ring-1 ring-[#E7F1EA]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpe3WsQjFS-iIU2fT40B0nQbw4uUdst6L7SYQDLh4ZufdC0n9PX0okJpc0aOk07eZrlrQMn9ytfpOBDqpzthd9RvlLkvJthaRDsGcohPH0ZUdU-cK-mCIdQGi7ls_JyC-6KQXgx5J7sXQKlDOsJZF8kWm0QP8a8CXR2Hq2qtVE6GqZkrdhlm7-8wJVJftOnhdZrOscvpjV-mZPSmXX8GccIy0cpRbVEKhv2JM0wN0"/>
+<span class="text-sm font-semibold text-[#303832]">Mariana Souza</span>
+</div>
+<span class="h-4 w-px bg-[#E7F1EA]"></span>
+<a class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#788078] hover:text-[#ba1a1a] transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Sair</span>
+</a>
+</div>
+</header>
+<!-- Conteúdo Principal -->
+<main class="flex-1 p-8 max-w-6xl w-full mx-auto flex flex-col gap-8">
+<!-- 1. Saudação limpa e Ação principal -->
+<section class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-[#174C3C] tracking-tight">Olá, Mariana</h1>
+<p class="text-sm text-[#788078] mt-0.5">Visão geral do controle de garantias e produtos cadastrados.</p>
+</div>
+<a class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#174C3C] text-white text-sm font-semibold hover:bg-[#123d30] shadow-sm transition-colors self-start sm:self-auto" href="#">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Cadastrar Produto</span>
+</a>
+</section>
+<!-- 2. Quatro Indicadores Objetivos (Estilo ShadCN) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Total de Produtos -->
+<div class="bg-white border border-[#E7F1EA] rounded-xl p-5 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-[#788078] uppercase tracking-wider">Total de Produtos</span>
+<span class="material-symbols-outlined text-[#788078] text-[20px]">inventory_2</span>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-bold text-[#303832]">14</span>
+<p class="text-xs text-[#788078] mt-1">Cadastrados no sistema</p>
+</div>
+</div>
+<!-- Garantias Ativas -->
+<div class="bg-white border border-[#E7F1EA] rounded-xl p-5 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-[#788078] uppercase tracking-wider">Garantias Ativas</span>
+<span class="material-symbols-outlined text-[#174C3C] text-[20px]">verified</span>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-bold text-[#174C3C]">9</span>
+<p class="text-xs text-[#788078] mt-1">Com prazo regular vigente</p>
+</div>
+</div>
+<!-- Próximas do Vencimento -->
+<div class="bg-white border border-[#E7F1EA] rounded-xl p-5 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-[#788078] uppercase tracking-wider">Próximas do Vencimento</span>
+<span class="material-symbols-outlined text-amber-600 text-[20px]">schedule</span>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-bold text-amber-600">3</span>
+<p class="text-xs text-[#788078] mt-1">Vencendo nos próximos 30 dias</p>
+</div>
+</div>
+<!-- Expiradas -->
+<div class="bg-white border border-[#E7F1EA] rounded-xl p-5 shadow-xs flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-[#788078] uppercase tracking-wider">Expiradas</span>
+<span class="material-symbols-outlined text-[#788078] text-[20px]">event_busy</span>
+</div>
+<div class="mt-3">
+<span class="text-2xl font-bold text-[#788078]">2</span>
+<p class="text-xs text-[#788078] mt-1">Prazo de cobertura encerrado</p>
+</div>
+</div>
+</section>
+<!-- 3. Lista Limpa e Objetiva: Produtos com Vencimento Próximo -->
+<section class="bg-white border border-[#E7F1EA] rounded-xl shadow-xs overflow-hidden">
+<div class="px-6 py-4 border-b border-[#E7F1EA] flex items-center justify-between">
+<div>
+<h2 class="text-base font-bold text-[#174C3C]">Produtos com Vencimento Próximo</h2>
+<p class="text-xs text-[#788078] mt-0.5">Acompanhamento dos itens prioritários</p>
+</div>
+<a class="text-xs font-semibold text-[#174C3C] hover:underline" href="#">Ver todos os produtos →</a>
+</div>
+<div class="divide-y divide-[#E7F1EA]">
+<!-- Item 1: Robô Aspirador Robot X1 -->
+<div class="px-6 py-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F7F5EF]/60 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-[#E7F1EA] flex items-center justify-center text-[#174C3C] shrink-0">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-[#303832]">Robô Aspirador Robot X1</span>
+<span class="text-xs text-[#788078]">Vence em 5 dias (28/03/2024)</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:self-auto self-end">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">
+                Próxima ao vencimento
+              </span>
+<a class="text-xs font-semibold text-[#174C3C] hover:underline whitespace-nowrap" href="#">
+                Ver detalhes
+              </a>
+</div>
+</div>
+<!-- Item 2: Fone de Ouvido Sony WH-1000XM4 -->
+<div class="px-6 py-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F7F5EF]/60 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-[#E7F1EA] flex items-center justify-center text-[#174C3C] shrink-0">
+<span class="material-symbols-outlined text-[20px]">headphones</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-[#303832]">Fone de Ouvido Sony WH-1000XM4</span>
+<span class="text-xs text-[#788078]">Vence em 23 dias (15/04/2024)</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:self-auto self-end">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200">
+                Próxima ao vencimento
+              </span>
+<a class="text-xs font-semibold text-[#174C3C] hover:underline whitespace-nowrap" href="#">
+                Ver detalhes
+              </a>
+</div>
+</div>
+<!-- Item 3: Smart TV 55" 4K OLED -->
+<div class="px-6 py-4.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-[#F7F5EF]/60 transition-colors">
+<div class="flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-[#E7F1EA] flex items-center justify-center text-[#174C3C] shrink-0">
+<span class="material-symbols-outlined text-[20px]">tv</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-[#303832]">Smart TV 55" 4K OLED</span>
+<span class="text-xs text-[#788078]">Vence em 48 dias (10/05/2024)</span>
+</div>
+</div>
+<div class="flex items-center gap-4 sm:self-auto self-end">
+<span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-[#E7F1EA] text-[#174C3C] border border-[#174C3C]/20">
+                Ativa
+              </span>
+<a class="text-xs font-semibold text-[#174C3C] hover:underline whitespace-nowrap" href="#">
+                Ver detalhes
+              </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

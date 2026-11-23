@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#F7F5EF","surface-bright":"#FFFFFF","surface-container-high":"#E2EAE1","error":"#ba1a1a","on-background":"#303832","on-tertiary":"#ffffff","secondary":"#174C3C","inverse-on-surface":"#ebf3ea","on-error":"#ffffff","secondary-fixed":"#E7F1EA","on-surface":"#303832","on-error-container":"#93000a","surface-variant":"#E7F1EA","surface-container":"#F0EFE9","primary-container":"#174C3C","tertiary":"#303832","on-secondary-fixed":"#174C3C","on-surface-variant":"#788078","surface-dim":"#EAE8E0","secondary-container":"#E7F1EA","outline":"#788078","error-container":"#ffdad6","primary-fixed":"#E7F1EA","primary-fixed-dim":"#9dd2bc","outline-variant":"#DDE2DC","primary":"#174C3C","surface-tint":"#174C3C","on-primary":"#ffffff","on-secondary-container":"#174C3C","inverse-primary":"#9dd2bc","surface-container-low":"#F7F5EF","inverse-surface":"#303832","on-secondary":"#ffffff","surface-container-highest":"#E2EAE1","on-primary-container":"#ffffff","surface-container-lowest":"#ffffff","background":"#F7F5EF"},borderRadius:{"DEFAULT":"0.375rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-md":"1rem","space-sm":"0.5rem","margin-mobile":"1rem","space-lg":"1.5rem","gutter":"1.5rem","space-xs":"0.25rem","margin":"2rem","space-xl":"2rem","gutter-mobile":"1rem"},fontFamily:{"body-md":["Manrope"],"body-sm":["Manrope"],"label-md":["Manrope"],"label-sm":["Manrope"],"title-md":["Manrope"],"headline-sm":["Manrope"],"headline-md":["Manrope"],"headline-lg":["Manrope"]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-outline-variant z-50 flex flex-col justify-between py-space-lg"><div class="flex flex-col"><div class="px-space-lg pb-space-lg flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-lg"><span class="material-symbols-outlined text-xl">verified</span></div><span class="font-headline-sm text-base font-bold text-primary tracking-tight">Cadê Minha Garantia</span></div><div class="px-space-md mb-space-md"><a class="w-full flex items-center justify-center gap-space-sm py-2.5 px-space-md rounded-lg bg-primary text-white font-label-md text-sm hover:opacity-95 transition-all shadow-sm" data-path="cadastrar-produto" href="#"><span class="material-symbols-outlined text-lg">add</span><span>Cadastrar Produto</span></a></div><nav class="px-space-md flex flex-col gap-1"><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-label-md text-sm hover:bg-surface-variant hover:text-on-surface transition-all" data-path="visao-geral" href="#"><span class="material-symbols-outlined text-xl">dashboard</span><span>Visão Geral</span></a><a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant font-label-md text-sm hover:bg-surface-variant hover:text-on-surface transition-all" data-path="meus-produtos" href="#"><span class="material-symbols-outlined text-xl">inventory_2</span><span>Meus Produtos</span></a></nav></div><div class="px-space-md flex flex-col gap-space-sm"><a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-on-surface-variant font-label-md text-sm hover:bg-surface-variant hover:text-on-surface transition-all" data-path="ajuda-e-suporte" href="#"><span class="material-symbols-outlined text-xl">help_outline</span><span>Ajuda e Suporte</span></a></div></aside><div class="pl-64 flex flex-col min-h-screen"><header class="fixed top-0 left-64 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-space-xl"><div class="relative w-80"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span><input class="w-full h-9 pl-9 pr-4 rounded-lg bg-surface border border-outline-variant text-on-surface text-sm placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Buscar produto ou nota fiscal..." type="text"/></div><div class="flex items-center gap-space-md"><button aria-label="Notificações" class="p-2 rounded-lg text-on-surface-variant hover:bg-surface hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-xl">notifications</span></button><div class="flex items-center gap-3 pl-space-md border-l border-outline-variant"><div class="w-8 h-8 rounded-full bg-secondary-container text-primary flex items-center justify-center font-bold text-xs">MS</div><div class="flex flex-col text-left"><span class="font-label-md text-sm text-on-surface font-semibold leading-none">Mariana Souza</span><span class="text-xs text-on-surface-variant mt-0.5">mariana@exemplo.com</span></div></div></div></header><main class="w-full pt-16 flex-1 bg-surface px-space-xl py-space-xl"><div class="max-w-3xl mx-auto w-full flex flex-col gap-space-lg">
+<!-- Cabeçalho Simples e Objetivo -->
+<div class="flex flex-col gap-1">
+<h1 class="text-2xl font-bold text-primary tracking-tight">Cadastrar Produto</h1>
+<p class="text-sm text-on-surface-variant">Preencha os dados do produto para acompanhar o prazo de garantia.</p>
+</div>
+<!-- Card Único ShadCN / Clean Form -->
+<form class="bg-white rounded-xl border border-outline-variant p-6 md:p-8 shadow-sm flex flex-col gap-6" id="productForm" onsubmit="event.preventDefault();">
+<!-- Grid de Campos do Produto -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Nome do Produto -->
+<div class="md:col-span-2 flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="prodName">
+        Nome do Produto <span class="text-primary">*</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="prodName" placeholder="Ex: Robô Aspirador Robot X1" required="" type="text" value="Robô Aspirador Robot X1"/>
+</div>
+<!-- Marca -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="prodBrand">
+        Marca <span class="text-xs font-normal text-on-surface-variant">(opcional)</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="prodBrand" placeholder="Ex: Xiaomi" type="text" value="Xiaomi"/>
+</div>
+<!-- Categoria -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="prodCategory">
+        Categoria <span class="text-primary">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-10 px-3 pr-8 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none cursor-pointer" id="prodCategory" required="">
+<option disabled="" value="">Selecione uma categoria</option>
+<option selected="" value="eletrodomesticos">Eletrodomésticos</option>
+<option value="eletronicos">Eletrônicos</option>
+<option value="informatica">Informática</option>
+<option value="audio">Áudio &amp; Vídeo</option>
+<option value="outros">Outros</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-lg">expand_more</span>
+</div>
+</div>
+<!-- Data da Compra -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="purchaseDate">
+        Data da Compra <span class="text-primary">*</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="purchaseDate" required="" type="date" value="2024-03-28"/>
+</div>
+<!-- Valor da Compra -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="purchaseValue">
+        Valor da Compra <span class="text-xs font-normal text-on-surface-variant">(opcional)</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="purchaseValue" placeholder="Ex: R$ 1.899,00" type="text" value="R$ 1.899,00"/>
+</div>
+<!-- Loja onde comprou -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="prodStore">
+        Loja onde comprou <span class="text-xs font-normal text-on-surface-variant">(opcional)</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="prodStore" placeholder="Ex: Amazon Brasil" type="text" value="Amazon Brasil"/>
+</div>
+<!-- Duração da Garantia -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface" for="warrantyMonths">
+        Duração da Garantia (meses) <span class="text-primary">*</span>
+</label>
+<input class="w-full h-10 px-3 rounded-lg border border-outline-variant bg-white text-on-surface text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" id="warrantyMonths" min="1" required="" type="number" value="12"/>
+</div>
+<!-- Destaque Sutil para Cálculo Automático de Vencimento -->
+<div class="md:col-span-2 p-3.5 rounded-lg bg-surface-variant border border-outline-variant/60 flex items-center justify-between text-sm">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-lg">event_available</span>
+<span class="font-medium" id="calculatedExpiry">Data de término calculada: 28/03/2025 (365 dias)</span>
+</div>
+<span class="text-xs text-on-surface-variant">Cálculo automático</span>
+</div>
+<!-- Upload de Comprovante (Opcional) -->
+<div class="md:col-span-2 flex flex-col gap-1.5">
+<label class="text-sm font-semibold text-on-surface">
+        Comprovante / Nota Fiscal <span class="text-xs font-normal text-on-surface-variant">(opcional)</span>
+</label>
+<div class="border border-dashed border-outline-variant rounded-lg p-6 bg-surface/50 hover:bg-surface text-center flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">upload_file</span>
+<span class="text-sm text-on-surface font-medium">Arraste ou selecione o comprovante (PDF, JPG ou PNG) - Opcional</span>
+<span class="text-xs text-on-surface-variant">Tamanho máximo até 10MB</span>
+</div>
+</div>
+</div>
+<!-- Ações no Rodapé do Form -->
+<div class="pt-4 border-t border-outline-variant flex items-center justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border border-outline-variant bg-white text-on-surface hover:bg-surface text-sm font-medium transition-colors" type="button">
+      Cancelar
+    </button>
+<button class="px-5 py-2 rounded-lg bg-primary text-white hover:opacity-95 text-sm font-medium shadow-sm transition-all flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-lg">check</span>
+<span>Salvar Produto</span>
+</button>
+</div>
+</form>
+</div>
+<script>
+  (function() {
+    const purchaseDateInput = document.getElementById('purchaseDate');
+    const warrantyMonthsInput = document.getElementById('warrantyMonths');
+    const calculatedExpiry = document.getElementById('calculatedExpiry');
+
+    function updateCalculatedDate() {
+      const pDateVal = purchaseDateInput.value;
+      const monthsVal = parseInt(warrantyMonthsInput.value, 10);
+
+      if (!pDateVal || isNaN(monthsVal) || monthsVal < 0) {
+        calculatedExpiry.textContent = 'Informe a data e os meses para calcular o término';
+        return;
+      }
+
+      const [year, month, day] = pDateVal.split('-').map(Number);
+      const expDate = new Date(year, month - 1 + monthsVal, day);
+
+      const fDay = String(expDate.getDate()).padStart(2, '0');
+      const fMonth = String(expDate.getMonth() + 1).padStart(2, '0');
+      const fYear = expDate.getFullYear();
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const diffTime = expDate - today;
+      const diffDays = Math.max(0, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+
+      calculatedExpiry.textContent = `Data de término calculada: ${fDay}/${fMonth}/${fYear} (${diffDays} dias)`;
+    }
+
+    purchaseDateInput.addEventListener('change', updateCalculatedDate);
+    warrantyMonthsInput.addEventListener('input', updateCalculatedDate);
+  })();
+</script>
+</main></div></body></html>

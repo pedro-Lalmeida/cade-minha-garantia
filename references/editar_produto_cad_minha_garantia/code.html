@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-surface":"#161d18","surface-bright":"#f3fcf2","primary":"#003527","on-tertiary":"#ffffff","on-error-container":"#93000a","on-tertiary-fixed":"#151d19","surface-container-lowest":"#ffffff","secondary-container":"#a8f2d3","surface-tint":"#356856","secondary":"#1f6a52","secondary-fixed":"#a8f2d3","surface-dim":"#d4dcd3","tertiary-fixed-dim":"#bfc9c2","on-secondary-fixed":"#002116","surface-variant":"#dce5dc","tertiary-container":"#3c4641","inverse-primary":"#9dd2bc","surface-container-low":"#edf6ed","inverse-on-surface":"#ebf3ea","outline-variant":"#c0c9c3","on-surface-variant":"#404945","background":"#f3fcf2","secondary-fixed-dim":"#8dd5b8","on-secondary":"#ffffff","inverse-surface":"#2a322c","primary-fixed-dim":"#9dd2bc","primary-fixed":"#b8eed8","error":"#ba1a1a","primary-container":"#174c3c","outline":"#707974","surface-container-highest":"#dce5dc","surface-container-high":"#e2eae1","surface-container":"#e8f0e7","on-primary-fixed-variant":"#1b4f3f","on-secondary-fixed-variant":"#00513c","on-tertiary-container":"#a9b3ad","on-primary-fixed":"#002117","on-primary-container":"#87bba7","surface":"#f3fcf2","tertiary":"#26302b","error-container":"#ffdad6","on-secondary-container":"#277058","on-error":"#ffffff","tertiary-fixed":"#dbe5de","on-background":"#161d18","on-primary":"#ffffff","on-tertiary-fixed-variant":"#3f4944"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"2rem","margin-mobile":"1rem","space-lg":"1.5rem","space-xl":"2rem","gutter":"1.5rem","space-xs":"0.25rem","space-md":"1rem","gutter-mobile":"1rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Manrope"],"headline-xl-mobile":["Manrope"],"label-sm":["Manrope"],"headline-lg-mobile":["Manrope"],"headline-lg":["Manrope"],"body-sm":["Manrope"],"headline-md":["Manrope"],"title-md":["Manrope"],"headline-xl":["Manrope"],"headline-sm":["Manrope"],"label-md":["Manrope"],"body-lg":["Manrope"]},fontSize:{"body-md":["1rem",{lineHeight:"1.5rem",fontWeight:"400"}],"headline-xl-mobile":["2rem",{lineHeight:"2.5rem",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["0.75rem",{lineHeight:"1rem",letterSpacing:"0.025em",fontWeight:"700"}],"headline-lg-mobile":["1.625rem",{lineHeight:"2.125rem",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-lg":["2.25rem",{lineHeight:"2.75rem",letterSpacing:"-0.02em",fontWeight:"600"}],"body-sm":["0.875rem",{lineHeight:"1.25rem",fontWeight:"400"}],"headline-md":["1.5rem",{lineHeight:"2rem",letterSpacing:"-0.01em",fontWeight:"600"}],"title-md":["1.125rem",{lineHeight:"1.5rem",fontWeight:"600"}],"headline-xl":["3rem",{lineHeight:"3.5rem",letterSpacing:"-0.03em",fontWeight:"700"}],"headline-sm":["1.25rem",{lineHeight:"1.75rem",fontWeight:"600"}],"label-md":["0.875rem",{lineHeight:"1.25rem",letterSpacing:"0.01em",fontWeight:"600"}],"body-lg":["1.125rem",{lineHeight:"1.75rem",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between py-6"><div class="flex flex-col gap-6"><div class="flex items-center gap-space-sm px-6"><div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[20px]">verified_user</span></div><span class="font-title-md text-title-md text-on-surface font-semibold tracking-tight">Cadê Minha Garantia</span></div><nav class="flex flex-col gap-1 px-3" data-active-classes="bg-primary-container text-on-primary font-label-md text-label-md"><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-all" data-path="visao-geral" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span>Visão Geral</a><a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container hover:text-on-surface transition-all" data-path="meus-produtos" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span>Meus Produtos</a><a aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all bg-primary-container text-on-primary font-label-md text-label-md" data-path="cadastrar-produto" href="#"><span class="material-symbols-outlined text-[20px]">add_circle</span>Cadastrar Produto</a></nav></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 z-40 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-8 flex items-center justify-end"><div class="flex items-center gap-6"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-label-md text-label-md text-on-surface font-medium">Mariana Souza</span></div><div class="h-4 w-px bg-outline-variant"></div><a class="flex items-center gap-1.5 font-label-md text-label-md text-on-surface-variant hover:text-error transition-colors" data-path="sair" href="#"><span class="material-symbols-outlined text-[18px]">logout</span><span>Sair</span></a></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<div class="max-w-4xl mx-auto w-full px-6 py-8 md:py-10">
+<!-- Topo Navegação Voltar & Contexto -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<a class="w-10 h-10 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="meus-produtos" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</a>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider font-semibold">Editar Inventário</span>
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ID #GR-84920</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight">Editar Produto</h1>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+          Garantia Expirada
+        </span>
+</div>
+</div>
+<!-- Card Principal de Formulário -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-[0_2px_12px_-4px_rgba(23,76,60,0.06),0_10px_28px_-6px_rgba(23,76,60,0.04)] overflow-hidden">
+<!-- Cabeçalho Informativo Sutil -->
+<div class="p-6 md:p-8 bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[26px]">cleaning_services</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface font-semibold leading-tight">Robô Aspirador Robot X1</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cadastrado originalmente em 28 de Março de 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-2 self-start sm:self-auto px-3.5 py-1.5 rounded-lg bg-surface-container-lowest shadow-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary">verified</span>
+<span class="font-label-sm text-label-sm font-semibold">NF Válida Armazenada</span>
+</div>
+</div>
+<!-- Formulário -->
+<form class="p-6 md:p-8 space-y-8" onsubmit="event.preventDefault();">
+<!-- Bloco 1: Identificação Básica -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 pb-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold">1. Dados Principais do Item</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Nome do Produto -->
+<div class="md:col-span-2">
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="product-name">
+                Nome do Produto <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all placeholder:text-outline focus:shadow-[0_0_0_2px_#174C3C]" id="product-name" name="product-name" placeholder="Ex: Smart TV 55 Polegadas" required="" type="text" value="Robô Aspirador Robot X1"/>
+</div>
+</div>
+<!-- Marca -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="brand">
+                Marca <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(Opcional)</span>
+</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all placeholder:text-outline focus:shadow-[0_0_0_2px_#174C3C]" id="brand" name="brand" placeholder="Ex: Samsung, Philips, Electrolux" type="text" value="Xiaomi"/>
+</div>
+<!-- Categoria -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="category">
+                Categoria <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all appearance-none focus:shadow-[0_0_0_2px_#174C3C] cursor-pointer" id="category" name="category" required="">
+<option value="">Selecione uma categoria</option>
+<option selected="" value="eletrodomesticos">Eletrodomésticos</option>
+<option value="eletronicos">Eletrônicos e Informática</option>
+<option value="moveis">Móveis e Decoração</option>
+<option value="automotivo">Automotivo</option>
+<option value="outros">Outros</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none text-[22px]">
+                  unfold_more
+                </span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-px bg-surface-container-high w-full"></div>
+<!-- Bloco 2: Compra e Cobertura -->
+<div class="space-y-4">
+<div class="flex items-center gap-2 pb-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold">2. Aquisição &amp; Prazos Legais</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Data da Compra -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="purchase-date">
+                Data da Compra <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all focus:shadow-[0_0_0_2px_#174C3C]" id="purchase-date" name="purchase-date" required="" type="date" value="2023-03-28"/>
+</div>
+</div>
+<!-- Valor da Compra -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="price">
+                Valor da Compra <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(Opcional)</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all placeholder:text-outline focus:shadow-[0_0_0_2px_#174C3C]" id="price" name="price" placeholder="R$ 0,00" type="text" value="R$ 1.899,00"/>
+</div>
+</div>
+<!-- Loja onde comprou -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="store">
+                Loja onde comprou <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">(Opcional)</span>
+</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all placeholder:text-outline focus:shadow-[0_0_0_2px_#174C3C]" id="store" name="store" placeholder="Ex: Amazon, Mercado Livre" type="text" value="Amazon Brasil"/>
+</div>
+</div>
+<!-- Duração e Cálculo em Destaque Visual -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-end pt-2">
+<!-- Duração em Meses -->
+<div class="md:col-span-5">
+<label class="block font-label-md text-label-md text-on-surface mb-1.5" for="warranty-months">
+                Duração da Garantia (meses) <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm outline-none transition-all focus:shadow-[0_0_0_2px_#174C3C]" id="warranty-months" max="120" min="1" name="warranty-months" required="" type="number" value="12"/>
+<span class="absolute right-3 top-3 font-label-sm text-label-sm text-on-surface-variant">meses</span>
+</div>
+</div>
+<!-- Card Cálculo Automático da Data de Término -->
+<div class="md:col-span-7">
+<div class="h-11 px-4 rounded-lg bg-surface-container flex items-center justify-between shadow-inner">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px] text-secondary">event_available</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wide">Término Calculado:</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">28/03/2024</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">(365 dias)</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="h-px bg-surface-container-high w-full"></div>
+<!-- Bloco 3: Arquivo da Nota Fiscal / Comprovante -->
+<div class="space-y-4">
+<div class="flex items-center justify-between pb-1">
+<span class="font-title-md text-title-md text-on-surface font-semibold">3. Comprovante / Nota Fiscal</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">1 Anexo Ativo</span>
+</div>
+<!-- Documento Já Anexado (Estado Preenchido) -->
+<div class="rounded-xl p-4 bg-surface-container-low shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all" id="file-card">
+<div class="flex items-center gap-3.5 min-w-0">
+<div class="w-11 h-11 rounded-lg bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[24px]">picture_as_pdf</span>
+</div>
+<div class="min-w-0">
+<p class="font-label-md text-label-md text-on-surface font-semibold truncate">nota_fiscal_aspirador.pdf</p>
+<div class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span>1.4 MB</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Enviado em 28/03/2023</span>
+</div>
+</div>
+</div>
+<!-- Ações do Arquivo -->
+<div class="flex items-center gap-2 self-end sm:self-center shrink-0">
+<!-- Visualizar -->
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all" id="btn-preview" title="Visualizar documento em tela cheia" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+<span>Visualizar</span>
+</button>
+<!-- Substituir -->
+<label class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-container-lowest text-secondary font-label-md text-label-md shadow-sm hover:bg-surface-container cursor-pointer transition-all" title="Substituir por outro arquivo">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span>Substituir</span>
+<input accept=".pdf,image/*" class="hidden" type="file"/>
+</label>
+<!-- Remover -->
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-error hover:bg-error-container/60 transition-all font-label-md text-label-md" id="btn-remove" title="Excluir anexo atual" type="button">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+<span>Remover</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Rodapé de Ações do Formulário -->
+<div class="pt-6 border-t-0 flex flex-col-reverse sm:flex-row sm:items-center justify-end gap-3.5">
+<!-- Cancelar -->
+<a class="h-11 px-6 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container flex items-center justify-center transition-all text-center" data-path="meus-produtos" href="#">
+            Cancelar
+          </a>
+<!-- Salvar Alterações -->
+<button class="h-11 px-7 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold shadow-md hover:bg-secondary transition-all flex items-center justify-center gap-2" id="btn-save" type="submit">
+<span class="material-symbols-outlined text-[20px]">save</span>
+<span>Salvar Alterações</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Informações Complementares de Ajuda e Histórico -->
+<div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between text-on-surface-variant font-body-sm text-body-sm gap-2 px-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span>Comprovante armazenado em cofre pessoal seguro com criptografia.</span>
+</div>
+<div>
+<span>Última alteração: 28 de Março de 2023, às 14:32</span>
+</div>
+</div>
+</div>
+<!-- Modal Flutuante de Visualização de Recibo/PDF (Simulação Interativa) -->
+<div class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-primary/40 backdrop-blur-sm" id="preview-modal">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl shadow-[0_20px_40px_-8px_rgba(23,76,60,0.2)] overflow-hidden flex flex-col max-h-[90vh]">
+<div class="px-6 py-4 bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-[22px]">description</span>
+<span class="font-title-md text-title-md font-semibold text-on-surface">nota_fiscal_aspirador.pdf</span>
+</div>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors" id="btn-close-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-8 flex flex-col items-center justify-center min-h-[380px] bg-surface-container-low text-center">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-sm flex items-center justify-center text-error mb-4">
+<span class="material-symbols-outlined text-[44px]">picture_as_pdf</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface font-semibold mb-1">DANFE Simplificada - Amazon Serviços de Varejo</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-md mb-6">Chave de Acesso: 3523 0315 4289 0001 5500 1000 4829 1928 3819 0182</p>
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Baixar Arquivo</span>
+</button>
+<button class="h-10 px-4 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md shadow-sm hover:bg-secondary transition-all flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+<span>Abrir no Navegador</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    // Microinterações do Formulário
+    const previewBtn = document.getElementById('btn-preview');
+    const previewModal = document.getElementById('preview-modal');
+    const closeModalBtn = document.getElementById('btn-close-modal');
+    const removeBtn = document.getElementById('btn-remove');
+    const fileCard = document.getElementById('file-card');
+    const saveBtn = document.getElementById('btn-save');
+
+    if (previewBtn && previewModal && closeModalBtn) {
+      previewBtn.addEventListener('click', () => {
+        previewModal.classList.remove('hidden');
+        previewModal.classList.add('flex');
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        previewModal.classList.add('hidden');
+        previewModal.classList.remove('flex');
+      });
+
+      previewModal.addEventListener('click', (e) => {
+        if (e.target === previewModal) {
+          previewModal.classList.add('hidden');
+          previewModal.classList.remove('flex');
+        }
+      });
+    }
+
+    if (removeBtn && fileCard) {
+      removeBtn.addEventListener('click', () => {
+        if (confirm('Deseja realmente remover o anexo da nota fiscal?')) {
+          fileCard.innerHTML = `
+            <div class="flex items-center gap-3 py-1 text-on-surface-variant w-full justify-between">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-outline">attachment</span>
+                <span class="font-body-sm text-body-sm">Nenhum comprovante anexado no momento.</span>
+              </div>
+              <label class="h-9 px-3.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold flex items-center gap-1.5 cursor-pointer shadow-sm hover:bg-secondary transition-all">
+                <span class="material-symbols-outlined text-[16px]">add</span>
+                <span>Anexar Nota Fiscal</span>
+                <input type="file" class="hidden" accept=".pdf,image/*" />
+              </label>
+            </div>
+          `;
+        }
+      });
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', (e) => {
+        const originalContent = saveBtn.innerHTML;
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[20px] animate-spin">refresh</span>
+          <span>Salvando...</span>
+        `;
+        setTimeout(() => {
+          saveBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[20px]">check</span>
+            <span>Alterações Salvas!</span>
+          `;
+          setTimeout(() => {
+            saveBtn.disabled = false;
+            saveBtn.innerHTML = originalContent;
+          }, 1800);
+        }, 600);
+      });
+    }
+  </script>
+</div></main></div></body></html>

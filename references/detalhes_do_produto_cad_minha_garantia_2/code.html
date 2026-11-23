@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#F7F5EF",
+            "surface-container-low": "#F1EFE8",
+            "surface-container": "#E7F1EA",
+            "surface-container-high": "#D8E6DC",
+            "surface-container-lowest": "#FFFFFF",
+            "primary": "#174C3C",
+            "primary-container": "#174C3C",
+            "secondary": "#245A49",
+            "secondary-container": "#E7F1EA",
+            "on-secondary-container": "#174C3C",
+            "on-surface": "#303832",
+            "on-surface-variant": "#788078",
+            "outline": "#788078",
+            "outline-variant": "#DCE2DD",
+            "error": "#BA1A1A",
+            "error-container": "#FFDAD6"
+          },
+          fontFamily: {
+            body: ["Manrope", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#F7F5EF] font-body text-[#303832] antialiased min-h-screen">
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white border-r border-[#E7F1EA] z-50 flex flex-col justify-between py-6">
+<div class="flex flex-col">
+<!-- Logo -->
+<div class="px-6 pb-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-[#174C3C] text-white flex items-center justify-center font-bold text-sm">
+<span class="material-symbols-outlined text-xl">shield_locked</span>
+</div>
+<span class="text-base font-bold text-[#174C3C] tracking-tight">Cadê Minha Garantia</span>
+</div>
+<!-- Add Button -->
+<div class="px-4 mb-4">
+<a class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#174C3C] text-white font-medium text-sm hover:bg-[#245A49] transition-colors" data-path="cadastrar-produto" href="#">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>Cadastrar Produto</span>
+</a>
+</div>
+<!-- Navigation Links -->
+<nav class="px-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-[#788078] font-medium text-sm hover:bg-[#E7F1EA]/60 hover:text-[#303832] transition-colors" data-path="visao-geral" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Visão Geral</span>
+</a>
+<a aria-current="page" class="flex items-center gap-3 px-3 py-2 rounded-xl bg-[#E7F1EA] text-[#174C3C] font-semibold text-sm transition-colors" data-path="meus-produtos" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span>Meus Produtos</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Help link -->
+<div class="px-4">
+<a class="flex items-center gap-2 px-3 py-2 rounded-xl text-[#788078] text-sm hover:bg-[#E7F1EA]/60 hover:text-[#303832] transition-colors" data-path="ajuda-e-suporte" href="#">
+<span class="material-symbols-outlined text-xl">help</span>
+<span>Ajuda e Suporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Container -->
+<div class="pl-64 flex flex-col min-h-screen">
+<!-- Header -->
+<header class="h-16 bg-[#F7F5EF]/90 backdrop-blur-md border-b border-[#E7F1EA] sticky top-0 z-40 flex items-center justify-between px-8">
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#788078] text-lg">search</span>
+<input class="w-full h-9 pl-9 pr-4 rounded-xl bg-white border border-[#E7F1EA] text-[#303832] text-sm placeholder:text-[#788078] focus:outline-none focus:border-[#174C3C] transition-colors" placeholder="Buscar produtos..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Notificações" class="p-2 rounded-full text-[#788078] hover:bg-white hover:text-[#303832] transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+<div class="flex items-center gap-2.5 pl-3 border-l border-[#E7F1EA]">
+<div class="w-8 h-8 rounded-full bg-[#174C3C] text-white flex items-center justify-center font-semibold text-xs">
+            MS
+          </div>
+<span class="text-sm font-medium text-[#303832]">Mariana Souza</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="w-full flex-1 p-8 max-w-6xl">
+<!-- Back Link & Title Header -->
+<div class="mb-6 flex flex-col gap-3">
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-[#174C3C] hover:underline w-fit" data-path="meus-produtos" href="#">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+<span>Voltar para Meus Produtos</span>
+</a>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<h1 class="text-2xl font-bold text-[#303832]">Robô Aspirador Robot X1</h1>
+<span class="px-2.5 py-0.5 rounded-full bg-[#E7F1EA] text-[#174C3C] font-semibold text-xs">Xiaomi</span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-[#E7F1EA] text-[#303832] text-sm font-medium hover:bg-[#E7F1EA]/50 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-base text-[#788078]">edit</span>
+<span>Editar Produto</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-[#FFDAD6] text-[#BA1A1A] text-sm font-medium hover:bg-[#FFDAD6]/30 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">delete</span>
+<span>Excluir Produto</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Warranty Status Card -->
+<div class="rounded-2xl bg-white border border-[#E7F1EA] p-6 mb-6 shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">schedule</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<span class="text-xs font-bold uppercase tracking-wider text-amber-700">Garantia</span>
+<span class="w-1 h-1 rounded-full bg-amber-700"></span>
+<span class="text-xs font-semibold text-amber-700">Próxima do vencimento</span>
+</div>
+<p class="text-sm text-[#788078]">
+                Restam <strong class="text-[#303832] font-semibold">5 dias</strong> de cobertura. Vencimento em <span class="font-medium text-[#303832]">28 de março de 2024</span>.
+              </p>
+</div>
+</div>
+<!-- Simple Progress Bar -->
+<div class="w-full md:w-72 flex flex-col gap-1.5 shrink-0">
+<div class="flex items-center justify-between text-xs text-[#788078]">
+<span>360 de 365 dias</span>
+<span class="font-semibold text-amber-700">5 dias restantes</span>
+</div>
+<div class="w-full h-2 rounded-full bg-[#E7F1EA] overflow-hidden">
+<div class="h-full bg-amber-600 rounded-full w-[98.6%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Two-Column Grid: Purchase Details & Attached Receipt -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<!-- Col 1: Dados da Compra -->
+<div class="md:col-span-7 bg-white rounded-2xl border border-[#E7F1EA] p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center gap-2 pb-2 border-b border-[#E7F1EA]">
+<span class="material-symbols-outlined text-[#174C3C] text-xl">receipt</span>
+<h2 class="text-base font-bold text-[#303832]">Dados da Compra</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-4 gap-x-6">
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Marca</span>
+<p class="text-sm font-semibold text-[#303832] mt-0.5">Xiaomi</p>
+</div>
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Categoria</span>
+<p class="text-sm font-semibold text-[#303832] mt-0.5">Eletrodomésticos</p>
+</div>
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Loja</span>
+<p class="text-sm font-semibold text-[#303832] mt-0.5">Amazon Brasil</p>
+</div>
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Data da Compra</span>
+<p class="text-sm font-semibold text-[#303832] mt-0.5">28/03/2023</p>
+</div>
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Valor Pago</span>
+<p class="text-sm font-semibold text-[#174C3C] mt-0.5">R$ 1.899,00</p>
+</div>
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Duração da Garantia</span>
+<p class="text-sm font-semibold text-[#303832] mt-0.5">12 meses</p>
+</div>
+<div class="col-span-2 pt-2 border-t border-[#E7F1EA] flex items-center justify-between">
+<div>
+<span class="text-xs font-medium text-[#788078] uppercase tracking-wider">Vencimento da Garantia</span>
+<p class="text-sm font-bold text-[#303832] mt-0.5">28/03/2024</p>
+</div>
+<span class="px-2.5 py-1 rounded-md bg-amber-50 text-amber-800 border border-amber-200 text-xs font-semibold">
+                Expira em breve
+              </span>
+</div>
+</div>
+</div>
+<!-- Col 2: Comprovante Anexado -->
+<div class="md:col-span-5 bg-white rounded-2xl border border-[#E7F1EA] p-6 shadow-sm flex flex-col gap-5">
+<div class="flex items-center gap-2 pb-2 border-b border-[#E7F1EA]">
+<span class="material-symbols-outlined text-[#174C3C] text-xl">attach_file</span>
+<h2 class="text-base font-bold text-[#303832]">Comprovante Anexado</h2>
+</div>
+<!-- File card -->
+<div class="rounded-xl border border-[#E7F1EA] bg-[#F7F5EF]/60 p-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-red-50 text-[#BA1A1A] border border-red-100 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-sm font-semibold text-[#303832] truncate" title="nota_fiscal_aspirador.pdf">
+                nota_fiscal_aspirador.pdf
+              </span>
+<span class="text-xs text-[#788078]">1.4 MB</span>
+</div>
+</div>
+<!-- Direct action buttons -->
+<div class="flex flex-col sm:flex-row gap-2.5">
+<button class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-[#174C3C] text-white text-sm font-medium hover:bg-[#245A49] transition-colors" type="button">
+<span class="material-symbols-outlined text-base">visibility</span>
+<span>Visualizar Comprovante</span>
+</button>
+<button class="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-white border border-[#E7F1EA] text-[#303832] text-sm font-medium hover:bg-[#E7F1EA]/60 transition-colors" type="button">
+<span class="material-symbols-outlined text-base text-[#788078]">download</span>
+<span>Baixar PDF</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
