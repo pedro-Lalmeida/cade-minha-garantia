@@ -5,7 +5,6 @@ import { Sidebar } from "@/components/layout/sidebar"
 import { DeleteDialog } from "@/components/products/delete-dialog"
 import { requireUser } from "@/lib/auth"
 import { AppProvider } from "@/providers/app-provider"
-import { Toaster } from "@/components/shared/toaster"
 
 async function DashboardShell({ children }: { children: React.ReactNode }) {
   const user = await requireUser()
@@ -18,7 +17,6 @@ async function DashboardShell({ children }: { children: React.ReactNode }) {
         <main id="conteudo" className="page-container" tabIndex={-1}>{children}</main>
       </div>
       <DeleteDialog />
-      <Toaster />
     </AppProvider>
   )
 }

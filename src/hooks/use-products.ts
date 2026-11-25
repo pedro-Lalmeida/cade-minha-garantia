@@ -11,8 +11,8 @@ export function useProducts() {
   return useQuery({ queryKey: listKey, queryFn: ({ signal }) => listProducts(signal) })
 }
 
-export function useProduct(id: string, initialData?: Product) {
-  return useQuery({ queryKey: productKey(id), queryFn: ({ signal }) => getProduct(id, signal), initialData })
+export function useProduct(id: string, initialData?: Product, enabled = true) {
+  return useQuery({ queryKey: productKey(id), queryFn: ({ signal }) => getProduct(id, signal), initialData, enabled })
 }
 
 export function useSaveProduct() {

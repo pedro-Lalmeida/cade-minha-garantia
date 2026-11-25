@@ -5,5 +5,5 @@ export const metadata = { title: "Editar produto" }
 
 export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
   const product = await requireProduct((await params).id)
-  return <EditProduct product={product} />
+  return <EditProduct key={product.id} product={product} />
 }

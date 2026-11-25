@@ -1,5 +1,6 @@
 import { productSchema } from "@/validations/product"
-import { matchesReceiptSignature, receiptLimit, validateReceiptFile } from "@/validations/receipt"
+import { receiptLimit, validateReceiptFile } from "@/validations/receipt"
+import { validReceiptContent } from "./receipt-content"
 import { ApiError, invalidFields } from "./api"
 
 export async function readProductRequest(request: Request, editing = false) {
@@ -43,8 +44,8 @@ export async function readProductRequest(request: Request, editing = false) {
   if (message) throw new ApiError(422, message, { receipt: [message] })
 
   const receiptContent = Buffer.from(await file.arrayBuffer())
-  if (!matchesReceiptSignature(receiptContent, file.type)) {
-    const message = "O conteúdo do arquivo não corresponde ao formato informado."
+  if (!await validReceiptContent(receiptContent, file.type)) {
+    const message = "O conteúdo do arquivo não corresponde ao formato informado ou está inválido. Use um PDF sem senha ou uma imagem válida."
     throw new ApiError(422, message, { receipt: [message] })
   }
 

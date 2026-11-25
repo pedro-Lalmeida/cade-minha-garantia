@@ -3,6 +3,7 @@ import { categories, type ProductInput, type Receipt } from "@/types/product"
 
 export type ProductRecord = Omit<ProductInput, "purchaseDate"> & {
   _id: Types.ObjectId
+  __v?: number
   userId: Types.ObjectId
   purchaseDate: Date
   receipt?: Receipt

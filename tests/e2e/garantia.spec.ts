@@ -13,6 +13,7 @@ const password = "Garantia-test-2026!"
 const ownerEmail = `garantia-e2e-${randomUUID()}@example.test`
 const otherEmail = `garantia-e2e-${randomUUID()}@example.test`
 const testEmails = [ownerEmail, otherEmail]
+const registrationResult = { message: "Solicitação processada. Você pode tentar entrar com seu e-mail e senha." }
 
 const account = (email: string, name = "Marina Teste") => ({
   name, email, password, confirmPassword: password,
@@ -86,7 +87,7 @@ test.afterAll(async () => {
   }
 })
 
-test("fluxo completo com contas isoladas, comprovantes e interface responsiva", async ({ page, browser }, testInfo) => {
+test("fluxo completo com contas isoladas, comprovantes e interface responsiva", async ({ page, browser, baseURL }, testInfo) => {
   await test.step("Protege páginas e endpoints quando não há sessão", async () => {
     for (const path of ["/dashboard", "/produtos", "/produtos/novo", "/produtos/0123456789abcdef01234567/editar"]) {
       await page.goto(path)
@@ -114,11 +115,16 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     await expect(page.getByLabel("Senha", { exact: true })).toHaveAttribute("type", "text")
     await page.getByRole("button", { name: "Ocultar senha" }).click()
     await page.getByLabel("Confirmar senha").fill(password)
+    const registration = page.waitForResponse((response) => response.url().endsWith("/api/auth/cadastro"))
     await page.getByRole("button", { name: "Criar conta", exact: true }).click()
+    const accepted = await registration
+    expect(accepted.status()).toBe(202)
     await expect(page).toHaveURL(/\/dashboard$/)
     await expect(page.getByRole("heading", { name: "Olá, Marina" })).toBeVisible()
     await expect(page.getByText("Seus produtos aparecem aqui")).toBeVisible()
-    expect((await register(page.request, ownerEmail.toUpperCase())).status()).toBe(409)
+    const repeated = await register(page.request, ownerEmail.toUpperCase())
+    expect(repeated.status()).toBe(accepted.status())
+    expect(await repeated.json()).toEqual(registrationResult)
 
     const db = await testDatabase()
     const persisted = await db.collection("users").findOne({ email: ownerEmail })
@@ -227,10 +233,12 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
   })
 
   await test.step("Isola produtos e comprovantes entre duas contas", async () => {
-    const context = await browser.newContext({ baseURL: "http://localhost:3000", locale: "pt-BR" })
+    const context = await browser.newContext({ baseURL, locale: "pt-BR" })
     try {
       const other = await context.newPage()
-      expect((await register(other.request, otherEmail)).status()).toBe(201)
+      const created = await register(other.request, otherEmail)
+      expect(created.status()).toBe(202)
+      expect(await created.json()).toEqual(registrationResult)
       await other.goto("/login")
       await login(other, otherEmail, "senha-errada")
       await expect(other.getByRole("alert").filter({ hasText: "E-mail ou senha inválidos." })).toBeVisible()
@@ -239,7 +247,12 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
       expect(await (await other.request.get("/api/produtos")).json()).toEqual([])
       const path = `/api/produtos/${id}`
       expect((await other.request.get(path)).status()).toBe(404)
-      expect((await other.request.patch(path, { multipart: multipart(data) })).status()).toBe(404)
+      for (const version of ["0", "1"]) {
+        const forbidden = await other.request.patch(path, {
+          headers: { "X-Product-Version": version }, multipart: multipart(data),
+        })
+        expect(forbidden.status()).toBe(404)
+      }
       expect((await other.request.delete(path)).status()).toBe(404)
       expect((await other.request.get(`${path}/comprovante?download=1`)).status()).toBe(404)
       await other.goto(`/produtos/${id}/editar`)
@@ -254,7 +267,18 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     }
   })
 
-  await test.step("Edita o produto, substitui e remove o comprovante", async () => {
+  await test.step("Edita um produto antigo sem versão, substitui e remove o comprovante", async () => {
+    const path = `/api/produtos/${id}`
+    expect((await (await page.request.get(path)).json()).version).toBe(0)
+    const db = await testDatabase()
+    try {
+      // A fixture representa documentos gravados sem __v antes do controle de edição.
+      await db.collection("products").updateOne({ _id: new mongoose.Types.ObjectId(id) }, { $unset: { __v: 1 } })
+    } finally {
+      await mongoose.disconnect()
+    }
+    expect((await (await page.request.get(path)).json()).version).toBe(0)
+
     await page.goto(`/produtos/${id}`)
     await page.getByRole("link", { name: `Editar ${data.name}` }).click()
     await expect(page.getByLabel("Nome do produto")).toHaveValue(data.name)
@@ -277,6 +301,7 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     await expect(viewer).toHaveURL(/\/comprovante$/)
     await viewer.close()
     const stored: Product = await (await page.request.get(`/api/produtos/${id}`)).json()
+    expect(stored.version).toBe(1)
     expect(stored.brand).toBeUndefined()
     expect(stored.purchasePrice).toBeUndefined()
     expect(stored).not.toHaveProperty("receiptContent")
@@ -288,6 +313,65 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     await page.getByRole("button", { name: "Salvar alterações", exact: true }).click()
     await expect(page.getByText("Nenhum comprovante anexado.")).toBeVisible()
     expect((await page.request.get(`/api/produtos/${id}/comprovante`)).status()).toBe(404)
+    expect((await (await page.request.get(path)).json()).version).toBe(2)
+  })
+
+  await test.step("Só aceita um PATCH para a mesma versão e preserva a edição vencedora", async () => {
+    const path = `/api/produtos/${id}`
+    const current: Product = await (await page.request.get(path)).json()
+    const draft = { ...data, name: current.name }
+    expect((await page.request.patch(path, { multipart: multipart(draft) })).status()).toBe(400)
+    expect((await page.request.patch(path, {
+      headers: { "X-Product-Version": "-1" }, multipart: multipart(draft),
+    })).status()).toBe(400)
+
+    const headers = { "X-Product-Version": String(current.version) }
+    const results = await Promise.all(["Loja A", "Loja B"].map((store) =>
+      page.request.patch(path, { headers, multipart: multipart({ ...draft, store }) })))
+    expect(results.map((result) => result.status()).sort()).toEqual([200, 409])
+    const accepted = results.find((result) => result.ok())!
+    const winner: Product = await accepted.json()
+    expect(winner.version).toBe(current.version + 1)
+
+    const stale = await page.request.patch(path, {
+      headers, multipart: multipart({ ...draft, store: "Loja desatualizada" }),
+    })
+    expect(stale.status()).toBe(409)
+    expect((await stale.json()).message).toContain("alterado por outra operação")
+    expect(await (await page.request.get(path)).json()).toEqual(winner)
+  })
+
+  await test.step("Duas abas mantêm o rascunho em conflito e permitem recarregar", async () => {
+    const path = `/api/produtos/${id}`
+    const edit = `/produtos/${id}/editar`
+    const secondEditor = await page.context().newPage()
+    try {
+      await Promise.all([page.goto(edit), secondEditor.goto(edit)])
+      await page.getByLabel("Loja").fill("Loja da edição atual")
+      await secondEditor.getByLabel("Loja").fill("Rascunho da outra aba")
+      await page.getByRole("button", { name: "Salvar alterações", exact: true }).click()
+      await expect(page).toHaveURL(`/produtos/${id}`)
+      const winner: Product = await (await page.request.get(path)).json()
+      expect(winner.store).toBe("Loja da edição atual")
+
+      await secondEditor.getByRole("button", { name: "Salvar alterações", exact: true }).click()
+      await expect(secondEditor.getByRole("alert").filter({ hasText: "alterado por outra operação" })).toBeVisible()
+      await expect(secondEditor.getByLabel("Loja")).toHaveValue("Rascunho da outra aba")
+      await expect(secondEditor.getByRole("button", { name: "Salvar alterações", exact: true })).toBeDisabled()
+      expect(await (await page.request.get(path)).json()).toEqual(winner)
+
+      await secondEditor.getByRole("button", { name: "Recarregar dados" }).click()
+      await expect(secondEditor.getByLabel("Loja")).toHaveValue("Loja da edição atual")
+      await secondEditor.getByLabel("Marca").fill("Marca revisada")
+      await secondEditor.getByRole("button", { name: "Salvar alterações", exact: true }).click()
+      await expect(secondEditor).toHaveURL(`/produtos/${id}`)
+      const resolved: Product = await (await page.request.get(path)).json()
+      expect(resolved).toMatchObject({
+        store: winner.store, brand: "Marca revisada", version: winner.version + 1,
+      })
+    } finally {
+      await secondEditor.close()
+    }
   })
 
   await test.step("Confere responsividade, confirmação e exclusão com cache atualizado", async () => {
@@ -308,7 +392,11 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     await expect(page.getByRole("link", { name: "Câmera revisada", exact: true })).toBeVisible()
     await page.getByRole("button", { name: "Excluir Câmera revisada" }).click()
     await page.getByRole("button", { name: "Excluir produto", exact: true }).click()
-    await expect(page.getByText("Produto excluído.")).toBeVisible()
+    const notice = page.getByRole("status").filter({ hasText: "Produto excluído." })
+    await expect(notice).toBeVisible()
+    const noticeBox = await notice.boundingBox()
+    const productActions = await page.getByRole("button", { name: "Excluir Roteador de teste" }).boundingBox()
+    expect(noticeBox!.y + noticeBox!.height).toBeLessThanOrEqual(productActions!.y)
     await expect(page.getByRole("link", { name: "Câmera revisada", exact: true })).toHaveCount(0)
     expect((await page.request.get(`/api/produtos/${id}`)).status()).toBe(404)
   })
@@ -333,5 +421,21 @@ test("fluxo completo com contas isoladas, comprovantes e interface responsiva", 
     await expect(page).toHaveURL(/\/login\?expirada=1$/)
     await expect(page.getByRole("status").filter({ hasText: "Sua sessão expirou. Entre novamente para continuar." })).toBeVisible()
     await expect(page.getByText(formatDate(data.purchaseDate), { exact: true }).filter({ visible: true })).toHaveCount(0)
+  })
+
+  await test.step("Limita tentativas de login e cadastro", async () => {
+    const attempts = Array.from({ length: 3 }, () => register(page.request, ownerEmail))
+    const registrations = await Promise.all(attempts)
+    expect(registrations.map((response) => response.status()).sort()).toEqual([202, 202, 429])
+    expect(Number(registrations.find((response) => response.status() === 429)?.headers()["retry-after"])).toBeGreaterThan(0)
+
+    const csrfResponse = await page.request.get("/api/auth/csrf")
+    const { csrfToken } = await csrfResponse.json()
+    const form = { csrfToken, email: `limite-${randomUUID()}@example.test`, password, json: "true" }
+    for (let attempt = 1; attempt <= 11; attempt++) {
+      const response = await page.request.post("/api/auth/callback/credentials", { form })
+      const { url } = await response.json()
+      expect(new URL(url).searchParams.get("error")).toBe(attempt <= 10 ? "CredentialsSignin" : "LimiteAutenticacao")
+    }
   })
 })

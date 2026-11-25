@@ -32,8 +32,11 @@ export type ProductInput = {
   warrantyMonths: number
 }
 
+export const productVersionHeader = "X-Product-Version"
+
 export type Product = ProductInput & {
   id: string
+  version: number
   receipt?: Receipt
   createdAt: string
   updatedAt: string

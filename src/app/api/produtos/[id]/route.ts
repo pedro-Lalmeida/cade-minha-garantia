@@ -3,6 +3,7 @@ import { connectMongo } from "@/lib/mongodb"
 import { readProductRequest } from "@/lib/product-request"
 import { findProduct, productDto, productScope } from "@/lib/products"
 import { ProductModel } from "@/models/product"
+import { productVersionHeader } from "@/types/product"
 
 type Context = { params: Promise<{ id: string }> }
 
@@ -22,6 +23,16 @@ export async function PATCH(request: Request, { params }: Context) {
     const userId = await apiUserId()
     checkRequestOrigin(request)
     const scope = productScope(userId, (await params).id)
+    const versionHeader = request.headers.get(productVersionHeader)
+    const version = Number(versionHeader)
+    if (!versionHeader || !/^\d+$/.test(versionHeader) || !Number.isSafeInteger(version) || version >= Number.MAX_SAFE_INTEGER) {
+      throw new ApiError(400, "Informe uma versão válida do produto para salvar a edição.")
+    }
+    // Produtos antigos sem __v começam na versão zero.
+    const expected = version === 0
+      ? { $or: [{ __v: 0 }, { __v: { $exists: false } }] }
+      : { __v: version }
+
     const { fields, attachment, removeReceipt } = await readProductRequest(request, true)
     const set = { ...fields, ...attachment }
     const unset: Record<string, 1> = {}
@@ -36,11 +47,15 @@ export async function PATCH(request: Request, { params }: Context) {
     }
 
     await connectMongo()
-    const product = await ProductModel.findOneAndUpdate(scope, {
+    const product = await ProductModel.findOneAndUpdate({ ...scope, ...expected }, {
       $set: set,
       $unset: unset,
+      $inc: { __v: 1 },
     }, { returnDocument: "after", runValidators: true }).lean()
-    if (!product) throw new ApiError(404, "Produto não encontrado.")
+    if (!product) {
+      if (!await ProductModel.exists(scope)) throw new ApiError(404, "Produto não encontrado.")
+      throw new ApiError(409, "Este produto foi alterado por outra operação. Recarregue os dados para continuar.")
+    }
     return privateJson(productDto(product))
   } catch (error) {
     return handleApiError(error)

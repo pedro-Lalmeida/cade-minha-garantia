@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react"
 import { ChevronDown, LoaderCircle, LogOut, Search } from "lucide-react"
 import { useUI } from "@/store/ui"
 import { Brand } from "@/components/shared/brand"
+import { Toaster } from "@/components/shared/toaster"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
@@ -74,6 +75,7 @@ export function Header({ name, email }: { name: string; email: string }) {
         </DropdownMenu>
       </div>
       <div className="px-3 pb-2 md:hidden"><Navigation mobile /></div>
+      <Toaster />
     </header>
   )
 }

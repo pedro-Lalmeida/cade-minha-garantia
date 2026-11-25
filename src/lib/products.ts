@@ -13,6 +13,7 @@ export function productDto(product: Omit<ProductRecord, "receiptContent">): Prod
   const { _id, name, brand, category, purchaseDate, purchasePrice, store, warrantyMonths, receipt, createdAt, updatedAt } = product
   return {
     id: _id.toString(),
+    version: product.__v ?? 0,
     name, brand, category, purchasePrice, store, warrantyMonths,
     purchaseDate: purchaseDate.toISOString().slice(0, 10),
     receipt: receipt && { name: receipt.name, mimeType: receipt.mimeType, size: receipt.size },

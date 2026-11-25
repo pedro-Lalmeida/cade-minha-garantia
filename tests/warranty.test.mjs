@@ -1,3 +1,6 @@
+import { PDFDocument } from "pdf-lib"
+import sharp from "sharp"
+import { validReceiptContent } from "../src/lib/receipt-content.ts"
 import { test } from "node:test"
 import assert from "node:assert/strict"
 import { calendarDate, daysRemaining, isCalendarDate, warrantyEnd, warrantyInfo } from "../src/lib/warranty.ts"
@@ -78,4 +81,28 @@ test("valida formato, tipo, tamanho e assinatura dos comprovantes", () => {
   assert.equal(matchesReceiptSignature(png, "image/jpeg"), false)
   assert.equal(matchesReceiptSignature(new Uint8Array([0xff, 0xd8, 0xff]), "image/jpeg"), true)
   assert.equal(matchesReceiptSignature(new TextEncoder().encode("%PDF-1.4"), "application/pdf"), true)
+})
+
+test("decodifica o comprovante aceito e rejeita arquivos truncados ou disfarçados", async () => {
+  const input = { create: { width: 20, height: 20, channels: 3, background: "white" } }
+  const png = await sharp(input).png().toBuffer()
+  const jpeg = await sharp(input).jpeg().toBuffer()
+  assert.equal(await validReceiptContent(png, "image/png"), true)
+  assert.equal(await validReceiptContent(jpeg, "image/jpeg"), true)
+  assert.equal(await validReceiptContent(png, "image/jpeg"), false)
+  assert.equal(await validReceiptContent(png.subarray(0, -16), "image/png"), false)
+  assert.equal(await validReceiptContent(jpeg.subarray(0, -10), "image/jpeg"), false)
+})
+
+test("analisa PDFs com tabela ou stream de referências e rejeita documentos incompletos", async () => {
+  const document = await PDFDocument.create()
+  document.addPage()
+  for (const useObjectStreams of [true, false]) {
+    const pdf = Buffer.from(await document.save({ useObjectStreams }))
+    assert.equal(await validReceiptContent(pdf, "application/pdf"), true)
+    assert.equal(await validReceiptContent(pdf.subarray(0, -12), "application/pdf"), false)
+    const invalidOffset = Buffer.from(pdf.toString("latin1").replace(/startxref\s+\d+/, "startxref\n1"), "latin1")
+    assert.equal(await validReceiptContent(invalidOffset, "application/pdf"), false)
+  }
+  assert.equal(await validReceiptContent(Buffer.from("%PDF-1.7\n%%EOF"), "application/pdf"), false)
 })

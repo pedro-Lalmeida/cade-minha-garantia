@@ -42,8 +42,7 @@ export function AuthForm({ mode, expired = false }: { mode: "login" | "register"
         })
         if (!response.ok) {
           const result: { message?: string; fields?: FieldErrors } = await response.json()
-          if (response.status === 409) setErrors({ email: [result.message ?? "E-mail já cadastrado."] })
-          else if (result.fields) setErrors(result.fields)
+          if (result.fields) setErrors(result.fields)
           else setMessage(result.message ?? "Não foi possível criar sua conta.")
           return
         }
@@ -57,6 +56,8 @@ export function AuthForm({ mode, expired = false }: { mode: "login" | "register"
       if (result?.ok && !result.error) {
         router.replace("/dashboard")
         router.refresh()
+      } else if (result?.error === "LimiteAutenticacao") {
+        setMessage("Muitas tentativas. Aguarde alguns minutos e tente novamente.")
       } else if (registration) {
         router.replace("/login?cadastro=1")
       } else {

@@ -1,4 +1,4 @@
-import type { Product, ProductInput } from "@/types/product"
+import { productVersionHeader, type Product, type ProductInput } from "@/types/product"
 
 type ErrorResponse = { message?: string; fields?: Record<string, string[] | undefined> }
 
@@ -40,17 +40,21 @@ export function getProduct(id: string, signal?: AbortSignal) {
   return request<Product>(productUrl(id), { signal })
 }
 
-export function saveProduct({ id, fields, receipt, removeReceipt }: {
-  id?: string
+type SaveProductInput = {
   fields: ProductInput
   receipt?: File
   removeReceipt?: boolean
-}) {
+} & ({ id: string; version: number } | { id?: undefined; version?: undefined })
+
+export function saveProduct({ id, version, fields, receipt, removeReceipt }: SaveProductInput) {
   const body = new FormData()
   body.set("product", JSON.stringify(fields))
   if (receipt) body.set("receipt", receipt)
   if (removeReceipt) body.set("removeReceipt", "true")
-  return request<Product>(id ? productUrl(id) : "/api/produtos", { method: id ? "PATCH" : "POST", body })
+  if (id === undefined) return request<Product>("/api/produtos", { method: "POST", body })
+  return request<Product>(productUrl(id), {
+    method: "PATCH", headers: { [productVersionHeader]: String(version) }, body,
+  })
 }
 
 export function deleteProduct(id: string) {

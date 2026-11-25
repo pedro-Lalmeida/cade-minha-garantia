@@ -19,17 +19,19 @@ import { ReceiptField } from "./receipt-field"
 
 type FieldErrors = Record<string, string[] | undefined>
 
-export function ProductForm({ product }: { product?: Product }) {
+export function ProductForm({ product, onReload }: { product?: Product; onReload?: () => Promise<void> }) {
   const [date, setDate] = useState(product?.purchaseDate ?? "")
   const [months, setMonths] = useState(product ? String(product.warrantyMonths) : "")
   const [file, setFile] = useState<File>()
   const [removeReceipt, setRemoveReceipt] = useState(false)
   const [errors, setErrors] = useState<FieldErrors>({})
   const [message, setMessage] = useState("")
+  const [conflict, setConflict] = useState("")
+  const [reloading, setReloading] = useState(false)
   const setNotice = useUI((state) => state.setNotice)
   const router = useRouter()
   const mutation = useSaveProduct()
-  const busy = mutation.isPending
+  const busy = mutation.isPending || reloading
   const cancelHref = product ? `/produtos/${product.id}` : "/produtos"
   const duration = Number(months)
   const end = isCalendarDate(date) && Number.isInteger(duration) && duration > 0 && duration <= 120_000
@@ -55,7 +57,7 @@ export function ProductForm({ product }: { product?: Product }) {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    if (busy) return
+    if (busy || conflict) return
     const formElement = event.currentTarget
     const form = Object.fromEntries(new FormData(formElement))
     const price = typeof form.purchasePrice === "string" ? form.purchasePrice.trim() : ""
@@ -72,18 +74,37 @@ export function ProductForm({ product }: { product?: Product }) {
     }
     setErrors({})
     try {
-      const saved = await mutation.mutateAsync({ id: product?.id, fields: parsed.data, receipt: file, removeReceipt })
+      const draft = { fields: parsed.data, receipt: file, removeReceipt }
+      const saved = await mutation.mutateAsync(product
+        ? { ...draft, id: product.id, version: product.version }
+        : draft)
       if (!product) formElement.reset()
       setNotice({ message: product ? "Alterações salvas." : "Produto cadastrado.", error: false })
       router.push(`/produtos/${saved.id}`)
     } catch (error) {
-      if (error instanceof RequestError && error.details.fields) {
+      if (error instanceof RequestError && error.status === 409) {
+        setConflict(error.message)
+      } else if (error instanceof RequestError && error.details.fields) {
         setErrors(error.details.fields)
       } else {
         const text = error instanceof Error ? error.message : "Não foi possível salvar o produto."
         setMessage(text)
         setNotice({ message: text, error: true })
       }
+    }
+  }
+
+  async function reload() {
+    if (!onReload || busy) return
+    setReloading(true)
+    setMessage("")
+    try {
+      await onReload()
+      setConflict("")
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : "Não foi possível recarregar o produto.")
+    } finally {
+      setReloading(false)
     }
   }
 
@@ -141,10 +162,20 @@ export function ProductForm({ product }: { product?: Product }) {
             }} />
           </section>
         </fieldset>
+        {conflict && (
+          <div className="mt-4 space-y-2 rounded-lg bg-expired-surface p-3 text-sm text-destructive">
+            <p role="alert">{conflict} O rascunho atual será substituído ao recarregar.</p>
+            {onReload && (
+              <Button type="button" variant="outline" disabled={busy} onClick={() => void reload()}>
+                {reloading ? "Recarregando…" : "Recarregar dados"}
+              </Button>
+            )}
+          </div>
+        )}
         {message && <p role="alert" className="mt-4 rounded-lg bg-expired-surface p-3 text-sm text-destructive">{message}</p>}
         <div className="mt-6 flex flex-wrap justify-end gap-2 border-t pt-5">
           <Button type="reset" variant="outline" className="h-11 px-4" disabled={busy} onClick={() => router.push(cancelHref)}>Cancelar</Button>
-          <Button type="submit" disabled={busy} className="h-11 px-4">
+          <Button type="submit" disabled={busy || Boolean(conflict)} className="h-11 px-4">
             {busy ? <LoaderCircle className="animate-spin" /> : <Save />}
             {busy ? "Salvando…" : product ? "Salvar alterações" : "Cadastrar produto"}
           </Button>

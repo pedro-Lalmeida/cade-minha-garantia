@@ -77,13 +77,15 @@ Os Server Components validam a sessão e, nas rotas dinâmicas, conferem a propr
 
 **Autenticação.** O cadastro normaliza o e-mail, valida a confirmação e grava o hash bcrypt com custo 12. O NextAuth.js verifica as credenciais, usa JWT em cookie HttpOnly e encerra a sessão no logout. Cada operação privada obtém o identificador na sessão. Consultas e mutations sobre um produto usam o par `_id` e `userId`. O DTO de produto inclui os metadados necessários à interface e a API de comprovante exige a mesma autorização.
 
+**Limites da autenticação.** O Atlas guarda contadores atômicos na coleção `auth_rate_limits`, com índice TTL em `expiresAt`. As janelas fixas de 15 minutos permitem 30 tentativas de login por IP e 10 por e-mail, além de 8 cadastros por IP e 4 por e-mail. As chaves usam HMAC com `NEXTAUTH_SECRET`. Configure o mesmo segredo em todas as instâncias que compartilham a proteção. A Vercel fornece o IP pelo cabeçalho `x-vercel-forwarded-for` quando a variável de sistema `VERCEL` está exposta. Fora desse ambiente, ou sem IP válido, o limite de IP é compartilhado. Se o contador estiver indisponível, o fluxo protegido recusa a tentativa. O cadastro responde da mesma forma para e-mails novos e existentes.
+
 **TanStack Query e Zustand.** A lista é compartilhada pelo painel e por Meus produtos. O salvamento atualiza o detalhe e invalida a lista. A exclusão remove o detalhe do cache e sincroniza a lista. O cache é montado dentro do layout autenticado. O Zustand mantém os filtros, o alvo da confirmação e o aviso visível.
 
 **Garantias.** O mês de vencimento é calculado preservando o dia da compra até o último dia disponível no mês de destino. Datas de compra são tratadas como datas civis. A situação é determinada pelo dia corrente em `America/Sao_Paulo`. A garantia está ativa com mais de 30 dias, próxima do vencimento entre 0 e 30 e expirada com menos de 0. O dia zero é exibido como **Vence hoje**.
 
 ## Comprovantes
 
-O armazenamento usa o Atlas já configurado. O campo `receipt` guarda nome, tipo e tamanho, e o campo `receiptContent` guarda o BSON binário com seleção desabilitada nas consultas comuns. A substituição, remoção e exclusão usam a atomicidade de um documento. O endpoint autenticado lê o binário após filtrar por proprietário e entrega o arquivo para visualização ou download com cache privado desativado. A aplicação valida extensão, tipo declarado, tamanho e assinatura inicial do arquivo.
+O armazenamento usa o Atlas já configurado. O campo `receipt` guarda nome, tipo e tamanho, e o campo `receiptContent` guarda o BSON binário com seleção desabilitada nas consultas comuns. A substituição, remoção e exclusão usam a atomicidade de um documento. O endpoint autenticado lê o binário após filtrar por proprietário e entrega o arquivo para visualização ou download com cache privado desativado. A aplicação valida extensão, tipo declarado, tamanho e assinatura inicial. No servidor, decodifica JPEG e PNG com limite de 32 megapixels e verifica a estrutura, o catálogo e as páginas de PDFs sem senha. A prévia usa `next/image` com `unoptimized` porque o otimizador padrão não encaminha o cookie da sessão. O navegador busca a imagem no endpoint privado com `no-store`.
 
 O limite de 4 MiB mantém o binário dentro do limite de 16 MiB por documento MongoDB e reserva espaço para o formulário multipart no limite padrão de corpo das Vercel Functions. A configuração usa as mesmas variáveis do banco. [Limites de BSON](https://www.mongodb.com/docs/manual/core/document/) · [Limites das Vercel Functions](https://vercel.com/docs/functions/limitations)
 
@@ -91,7 +93,7 @@ O limite de 4 MiB mantém o binário dentro do limite de 16 MiB por documento Mo
 
 1. Importe o repositório em um projeto Vercel com o preset **Next.js**, a raiz do repositório como diretório do projeto e uma versão do Node.js compatível com `package.json`.
 2. Cadastre `MONGODB_URI`, `NEXTAUTH_SECRET` e `NEXTAUTH_URL` nas variáveis do ambiente de produção. Use a URL HTTPS canônica em `NEXTAUTH_URL`. Para testar em Preview, configure o ambiente correspondente com a URL e o banco de teste.
-3. Configure no Atlas o usuário do banco e o acesso de rede para o ambiente de execução de acordo com a política do projeto. As permissões do usuário devem permitir ler, escrever e criar os índices do banco da aplicação.
+3. Configure no Atlas o usuário do banco e o acesso de rede para o ambiente de execução de acordo com a política do projeto. As permissões do usuário devem permitir ler, escrever e criar os índices do banco da aplicação, inclusive o índice TTL dos contadores de autenticação.
 4. Inicie o deploy e confirme cadastro, login, criação de produto, visualização de comprovante e logout na URL publicada.
 
 [Deploy do Next.js na Vercel](https://vercel.com/docs/frameworks/full-stack/nextjs) · [Variáveis da Vercel](https://vercel.com/docs/environment-variables) · [Acesso de rede no Atlas](https://www.mongodb.com/docs/atlas/security/ip-access-list/)
